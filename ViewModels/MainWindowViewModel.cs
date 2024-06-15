@@ -27,7 +27,7 @@ namespace OptimaFarm_TestTask.ViewModels
         
         public ObservableCollection<Emploee> emploees = new ObservableCollection<Emploee>();
         private Emploee _selectedEmploee ;
-        private Emploee _tempEmploee = new Emploee() { IsActive=true, EmploymentDate=DateTime.Today};
+        private Emploee _tempEmploee = new Emploee() { IsActive=true, EmploymentDate=DateTime.Today, Birthday=DateTime.Today.AddYears(-20)};
         private string _searchFilter;
 
         #region commands
@@ -77,7 +77,8 @@ namespace OptimaFarm_TestTask.ViewModels
         {
             if (_selectedEmploee == null)
             {
-                MessageBox.Show("It is impossible to update the card because no employee has been selected.\nPlease use the Create button to add an employee.");
+                MessageBox.Show("It is impossible to update the card because no employee has been selected.\n"
+                    +"Please use the Create button to add an employee.");
                 return;
             }
 
@@ -87,7 +88,8 @@ namespace OptimaFarm_TestTask.ViewModels
             int index = emploees.IndexOf(_selectedEmploee);
             if (index == -1)
             {
-                MessageBox.Show("It looks like the employee card has been deleted, so the record cannot be updated.\nPlease use the add button to create a new card.");
+                MessageBox.Show("It looks like the employee card has been deleted, so the record cannot be updated.\n"
+                    +"Please use the add button to create a new card.");
                 return;
             }            
             emploees[index] = SelectedEmploee = new Emploee(_tempEmploee);
